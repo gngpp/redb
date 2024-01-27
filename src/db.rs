@@ -18,7 +18,7 @@ use std::io::ErrorKind;
 use std::marker::PhantomData;
 use std::ops::RangeFull;
 use std::path::Path;
-use std::sync::atomic::{AtomicU64, Ordering};
+use portable_atomic::{AtomicU64, Ordering};
 use std::sync::{Arc, Condvar, Mutex};
 
 use crate::error::TransactionError;
@@ -966,7 +966,7 @@ mod test {
         TableDefinition,
     };
     use std::io::ErrorKind;
-    use std::sync::atomic::{AtomicU64, Ordering};
+    use portable_atomic::{AtomicU64, Ordering};
 
     #[derive(Debug)]
     struct FailingBackend {

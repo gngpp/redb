@@ -6,7 +6,7 @@ use std::collections::{BTreeMap, BTreeSet, HashSet};
 use std::fmt::Debug;
 use std::io::{ErrorKind, Read, Seek, SeekFrom};
 use std::sync::Arc;
-use std::sync::atomic::{AtomicU64, Ordering};
+use portable_atomic::{AtomicU64, Ordering};
 use tempfile::NamedTempFile;
 
 mod common;

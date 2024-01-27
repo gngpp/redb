@@ -13,7 +13,7 @@ mod unix {
     use std::ops::DerefMut;
     use std::os::unix::fs::FileExt;
     use std::path::Path;
-    use std::sync::atomic::{AtomicBool, AtomicPtr, AtomicU64, AtomicUsize, Ordering};
+    use portable_atomic::{AtomicBool, AtomicPtr, AtomicU64, AtomicUsize, Ordering};
     use std::sync::{Arc, Mutex, RwLock};
     use std::time::{Duration, SystemTime};
     use std::{io, mem, thread};

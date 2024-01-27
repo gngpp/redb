@@ -1,5 +1,5 @@
 use std::hint::black_box;
-use std::sync::atomic::{AtomicU64, Ordering};
+use portable_atomic::{AtomicU64, Ordering};
 use std::sync::{Mutex, RwLock};
 use std::thread;
 use std::time::SystemTime;
