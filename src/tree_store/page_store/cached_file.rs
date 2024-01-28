@@ -6,9 +6,14 @@ use std::io;
 use std::mem;
 use std::ops::{Index, IndexMut};
 use std::slice::SliceIndex;
-#[cfg(feature = "cache_metrics")]
+#[cfg(all(feature = "cache_metrics", target_has_atomic = "64"))]
 use std::sync::atomic::AtomicU64;
+#[cfg(all(feature = "cache_metrics", not(target_has_atomic = "64")))]
+use portable_atomic::AtomicU64;
+#[cfg(not(target_has_atomic = "64"))]
 use portable_atomic::{AtomicBool, AtomicUsize, Ordering};
+#[cfg(target_has_atomic = "64")]
+use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
 use std::sync::{Arc, Mutex, RwLock};
 
 // Leaf pages are cached with low priority. Everything is cached with high priority

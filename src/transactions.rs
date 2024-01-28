@@ -21,7 +21,10 @@ use std::collections::{HashMap, HashSet};
 use std::fmt::{Display, Formatter};
 use std::marker::PhantomData;
 use std::ops::{RangeBounds, RangeFull};
+#[cfg(not(target_has_atomic = "64"))]
 use portable_atomic::{AtomicBool, Ordering};
+#[cfg(target_has_atomic = "64")]
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 use std::{panic, thread};
 

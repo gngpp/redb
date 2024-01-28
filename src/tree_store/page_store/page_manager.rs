@@ -17,7 +17,10 @@ use std::cmp::{max, min};
 use std::collections::HashMap;
 use std::collections::HashSet;
 use std::convert::TryInto;
+#[cfg(not(target_has_atomic = "64"))]
 use portable_atomic::{AtomicBool, Ordering};
+#[cfg(target_has_atomic = "64")]
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Mutex;
 
 // Regions have a maximum size of 4GiB. A `4GiB - overhead` value is the largest that can be represented,
